@@ -18,7 +18,7 @@ function generateCertificates() {
   });
 
   fs.writeFileSync('encryption-public-key.pem', publicKey);
-  fs.writeFileSync('encryption-private-key.pem', privateKey);
+  fs.writeFileSync('decryption-private-key.pem', privateKey);
 
   return { publicKey, privateKey };
 }
@@ -51,3 +51,6 @@ console.log('Зашифрованный текст:', encryptedText);
 
 const decryptedText = decryptText(encryptedText, encryptionPrivateKey);
 console.log('Расшифрованный текст:', decryptedText);
+
+fs.unlinkSync('encryption-public-key.pem');
+fs.unlinkSync('decryption-private-key.pem');
